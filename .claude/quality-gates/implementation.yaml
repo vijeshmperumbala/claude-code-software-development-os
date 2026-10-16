@@ -1,0 +1,12 @@
+name: implementation
+required_evidence:
+  - approved_plan
+  - diff_reviewed
+  - relevant_tests
+  - lint_typecheck_build_when_configured
+  - docs_updated_or_reason_not_applicable
+block_if:
+  - acceptance_criteria_fail
+  - unexplained_unrelated_changes
+  - security_regression_is_unresolved
+approval_required_for_material_changes: true

@@ -1,0 +1,10 @@
+name: device_quality
+required_evidence:
+  - supported_platform_matrix
+  - responsive_or_platform_specific_checks_when_relevant
+  - accessibility_review_when_relevant
+  - actual_device_browser_test_evidence_or_explicit_not_run
+block_if:
+  - declared_critical_platform_is_unverified
+  - critical_user_flow_is_unusable_on_supported_platform
+approval_required_for_support_matrix_changes: true

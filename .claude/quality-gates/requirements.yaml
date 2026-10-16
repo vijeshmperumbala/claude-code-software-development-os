@@ -1,0 +1,11 @@
+name: requirements
+required_evidence:
+  - problem_and_target_users
+  - scope_and_non_goals
+  - testable_acceptance_criteria
+  - nonfunctional_requirements
+  - assumptions_and_risks
+block_if:
+  - material_scope_is_ambiguous
+  - acceptance_criteria_are_not_testable
+approval_required: true

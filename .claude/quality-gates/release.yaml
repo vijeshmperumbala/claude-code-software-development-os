@@ -1,0 +1,17 @@
+name: release_readiness
+required_evidence:
+  - approved_release_scope
+  - build_and_tests
+  - security_findings_triaged
+  - config_and_secrets_review
+  - migration_and_data_recovery_plan_when_relevant
+  - monitoring_and_alerting
+  - rollback_or_recovery_plan
+  - release_notes_and_runbook_when_relevant
+block_if:
+  - critical_or_unaccepted_high_risk
+  - rollback_or_recovery_is_missing_for_high_impact_change
+  - required_checks_are_failed_or_not_run
+  - deployment_approval_is_missing
+result_values: [READY_FOR_HUMAN_APPROVAL, NOT_READY, BLOCKED]
+automatically_deploy: false

@@ -1,0 +1,12 @@
+name: security
+required_evidence:
+  - security_scope_documented
+  - authn_authz_review_when_relevant
+  - dependency_review_when_available
+  - secrets_and_sensitive_data_review_when_relevant
+  - findings_triaged
+block_if:
+  - unresolved_critical_finding
+  - unresolved_high_finding_without_explicit_authorized_risk_acceptance
+  - scan_or_test_claims_lack_evidence
+approval_required_for_risk_acceptance: true
