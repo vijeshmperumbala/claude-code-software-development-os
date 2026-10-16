@@ -1,0 +1,44 @@
+Claude Code Software Development OS — command reference
+
+/project-init
+/plan-feature
+/implement-feature
+/audit
+/audit-all
+/audit-architecture
+/audit-api
+/audit-database
+/audit-frontend
+/audit-security
+/audit-performance
+/audit-reliability
+/audit-testing
+/audit-configuration
+/audit-deployment
+/audit-documentation
+/audit-ai
+/audit-device
+/fix-audit
+/re-audit
+/release-check
+/bug-audit
+/bug-fix-orchestrator
+
+Commands are entry points, not proof that checks passed. Review each command's instructions and confirm Claude Code discovers it in your installed version.
+
+/engineering-orchestrator <objective> — main-session orchestration for complex end-to-end work
+/build-module <objective> — module-focused orchestration workflow
+
+/module-report — generate an evidence-based before/after module completion report
+
+/enhance-project <goal> — assess an existing project, propose improvements, implement approved scope, and report before/after evidence
+
+Agent catalog: see `agents-manifest.json`. The main orchestrator routes relevant tasks to the 12 additional specialists for independent review, migrations, test data, API contracts, dependency management/licensing, internationalization, technical debt, root-cause analysis, cost optimization, accessibility automation, and feature-flag lifecycle.
+
+/validate-os
+/architecture-map
+/audit-diff
+/agent-efficiency-review
+/trace-requirements — Trace approved requirements to implementation and test evidence.
+/validate-recovery — Review backup and restore validation readiness.
+/check-ci-gates — Inspect and verify CI quality gates.

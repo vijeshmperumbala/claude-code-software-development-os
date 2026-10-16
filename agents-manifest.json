@@ -1,0 +1,669 @@
+{
+  "name": "Claude Code Software Development OS",
+  "version": "1.2.0",
+  "mode": "approval-first",
+  "stack_strategy": "adaptive",
+  "agent_count": 72,
+  "legacy_audit_agents": [
+    "security-agent",
+    "vulnerability-agent",
+    "code-quality-agent",
+    "duplication-agent",
+    "architecture-agent",
+    "performance-agent",
+    "database-agent",
+    "api-agent",
+    "reliability-agent",
+    "concurrency-agent",
+    "caching-agent",
+    "testing-agent",
+    "frontend-agent",
+    "accessibility-agent",
+    "observability-agent",
+    "scalability-agent",
+    "configuration-agent",
+    "deployment-agent",
+    "ai-code-agent",
+    "documentation-agent"
+  ],
+  "agents": [
+    {
+      "name": "security-agent",
+      "file": ".claude/agents/security-agent.md",
+      "description": "Review security posture and secure design across the repository.",
+      "focus": "Security architecture, trust boundaries, auth, secrets, data protection, security controls."
+    },
+    {
+      "name": "vulnerability-agent",
+      "file": ".claude/agents/vulnerability-agent.md",
+      "description": "Find and validate concrete application vulnerabilities in authorized codebases.",
+      "focus": "Injection, access control, SSRF, path traversal, unsafe uploads/deserialization, dependency exposure."
+    },
+    {
+      "name": "code-quality-agent",
+      "file": ".claude/agents/code-quality-agent.md",
+      "description": "Review maintainability, correctness, idiomatic patterns and technical debt.",
+      "focus": "Complexity, error handling, typing, readability, cohesion, safe refactoring."
+    },
+    {
+      "name": "duplication-agent",
+      "file": ".claude/agents/duplication-agent.md",
+      "description": "Find meaningful duplication and recommend safe consolidation.",
+      "focus": "Repeated logic, drift risk, premature abstractions, shared helpers."
+    },
+    {
+      "name": "architecture-agent",
+      "file": ".claude/agents/architecture-agent.md",
+      "description": "Review architecture, boundaries, dependencies and design decisions.",
+      "focus": "Modularity, coupling, dependency direction, ADRs, evolutionary design."
+    },
+    {
+      "name": "performance-agent",
+      "file": ".claude/agents/performance-agent.md",
+      "description": "Identify performance bottlenecks and require measurable evidence for claims.",
+      "focus": "Latency, CPU/memory, rendering, startup, profiling, benchmarks."
+    },
+    {
+      "name": "database-agent",
+      "file": ".claude/agents/database-agent.md",
+      "description": "Review data models, integrity, migrations and query access patterns.",
+      "focus": "Schema, constraints, indexes, migrations, transactions, N+1 queries."
+    },
+    {
+      "name": "api-agent",
+      "file": ".claude/agents/api-agent.md",
+      "description": "Review API contracts, correctness, validation and compatibility.",
+      "focus": "REST/RPC conventions, errors, pagination, versioning, idempotency."
+    },
+    {
+      "name": "reliability-agent",
+      "file": ".claude/agents/reliability-agent.md",
+      "description": "Review failure handling and operational resilience.",
+      "focus": "Timeouts, retries, idempotency, graceful degradation, recovery."
+    },
+    {
+      "name": "concurrency-agent",
+      "file": ".claude/agents/concurrency-agent.md",
+      "description": "Review concurrent behavior and consistency risks.",
+      "focus": "Race conditions, deadlocks, locking, async tasks, transaction boundaries."
+    },
+    {
+      "name": "caching-agent",
+      "file": ".claude/agents/caching-agent.md",
+      "description": "Review caching design and consistency risks.",
+      "focus": "Invalidation, TTL, cache keys, tenant isolation, stampedes, stale data."
+    },
+    {
+      "name": "testing-agent",
+      "file": ".claude/agents/testing-agent.md",
+      "description": "Review test strategy, coverage quality and missing verification.",
+      "focus": "Unit, integration, E2E, regression, determinism, edge cases."
+    },
+    {
+      "name": "frontend-agent",
+      "file": ".claude/agents/frontend-agent.md",
+      "description": "Review frontend architecture and implementation quality.",
+      "focus": "State, rendering, forms, routing, bundle size, error/loading states."
+    },
+    {
+      "name": "accessibility-agent",
+      "file": ".claude/agents/accessibility-agent.md",
+      "description": "Review accessibility and inclusive interaction patterns.",
+      "focus": "Keyboard, focus, semantics, contrast, screen readers, WCAG."
+    },
+    {
+      "name": "observability-agent",
+      "file": ".claude/agents/observability-agent.md",
+      "description": "Review diagnosability and production telemetry.",
+      "focus": "Structured logs, metrics, traces, alerts, sensitive-data redaction."
+    },
+    {
+      "name": "scalability-agent",
+      "file": ".claude/agents/scalability-agent.md",
+      "description": "Review capacity and growth constraints.",
+      "focus": "Throughput, horizontal scaling, queues, contention, resource limits."
+    },
+    {
+      "name": "configuration-agent",
+      "file": ".claude/agents/configuration-agent.md",
+      "description": "Review environment and runtime configuration safety.",
+      "focus": "Required env vars, secret handling, config validation, feature flags."
+    },
+    {
+      "name": "deployment-agent",
+      "file": ".claude/agents/deployment-agent.md",
+      "description": "Review deployment, release and rollback readiness without deploying.",
+      "focus": "CI/CD, migrations, health checks, rollback, release risks."
+    },
+    {
+      "name": "ai-code-agent",
+      "file": ".claude/agents/ai-code-agent.md",
+      "description": "Review AI-assisted or model-integrated code for correctness and safety.",
+      "focus": "Prompt injection, output validation, tool permissions, evals, data leakage."
+    },
+    {
+      "name": "documentation-agent",
+      "file": ".claude/agents/documentation-agent.md",
+      "description": "Review documentation accuracy, completeness and maintainability.",
+      "focus": "README, setup, API docs, runbooks, ADRs, release notes."
+    },
+    {
+      "name": "product-strategist-agent",
+      "file": ".claude/agents/product-strategist-agent.md",
+      "description": "Translate product intent into scope, outcomes and prioritized MVP.",
+      "focus": "Users, value proposition, constraints, measurable outcomes, assumptions."
+    },
+    {
+      "name": "market-research-agent",
+      "file": ".claude/agents/market-research-agent.md",
+      "description": "Structure market/competitor research when sources or user-provided evidence exist.",
+      "focus": "Competitors, user needs, alternatives, source quality, evidence gaps."
+    },
+    {
+      "name": "business-analyst-agent",
+      "file": ".claude/agents/business-analyst-agent.md",
+      "description": "Map business workflows and turn needs into testable requirements.",
+      "focus": "Actors, workflows, edge cases, acceptance criteria, non-functional requirements."
+    },
+    {
+      "name": "requirements-agent",
+      "file": ".claude/agents/requirements-agent.md",
+      "description": "Own requirement completeness and traceability.",
+      "focus": "Stories, acceptance criteria, constraints, dependencies, traceability matrix."
+    },
+    {
+      "name": "project-initializer-agent",
+      "file": ".claude/agents/project-initializer-agent.md",
+      "description": "Safely initialize or assess a repository without forcing a technology stack.",
+      "focus": "Repo inventory, stack detection, starter docs, scripts, setup and assumptions."
+    },
+    {
+      "name": "repository-architect-agent",
+      "file": ".claude/agents/repository-architect-agent.md",
+      "description": "Define repository layout, ownership and dependency conventions.",
+      "focus": "Monorepo boundaries, module ownership, file organization, build boundaries."
+    },
+    {
+      "name": "backend-development-agent",
+      "file": ".claude/agents/backend-development-agent.md",
+      "description": "Implement approved backend changes using existing project conventions.",
+      "focus": "Business logic, validation, authz, transactions, error handling, tests."
+    },
+    {
+      "name": "frontend-development-agent",
+      "file": ".claude/agents/frontend-development-agent.md",
+      "description": "Implement approved frontend changes using the existing stack and design system.",
+      "focus": "Components, routing, state, forms, responsive behavior, tests."
+    },
+    {
+      "name": "integration-agent",
+      "file": ".claude/agents/integration-agent.md",
+      "description": "Design and review external integrations.",
+      "focus": "API clients, webhooks, retries, signatures, rate limits, secret storage."
+    },
+    {
+      "name": "threat-modeling-agent",
+      "file": ".claude/agents/threat-modeling-agent.md",
+      "description": "Create threat models before high-risk design or feature changes.",
+      "focus": "Assets, actors, trust boundaries, attack paths, mitigations, residual risk."
+    },
+    {
+      "name": "authentication-authorization-agent",
+      "file": ".claude/agents/authentication-authorization-agent.md",
+      "description": "Independently review identity and access-control logic.",
+      "focus": "Sessions/tokens, roles, object-level authz, tenant isolation, recovery flows."
+    },
+    {
+      "name": "dependency-security-agent",
+      "file": ".claude/agents/dependency-security-agent.md",
+      "description": "Review third-party and software supply-chain risk.",
+      "focus": "Lockfiles, known advisories, provenance, update risk, licenses where relevant."
+    },
+    {
+      "name": "secrets-privacy-agent",
+      "file": ".claude/agents/secrets-privacy-agent.md",
+      "description": "Review sensitive-data flows and secret handling.",
+      "focus": "PII inventory, minimization, retention, logs, consent, secret exposure."
+    },
+    {
+      "name": "security-testing-agent",
+      "file": ".claude/agents/security-testing-agent.md",
+      "description": "Define or perform authorized security verification and retesting.",
+      "focus": "SAST/DAST results, negative tests, access-control tests, remediation verification."
+    },
+    {
+      "name": "database-optimization-agent",
+      "file": ".claude/agents/database-optimization-agent.md",
+      "description": "Investigate database performance with query and workload evidence.",
+      "focus": "Explain plans, indexes, query shape, N+1, connection pools."
+    },
+    {
+      "name": "load-testing-agent",
+      "file": ".claude/agents/load-testing-agent.md",
+      "description": "Design safe load/stress tests for controlled environments.",
+      "focus": "Workload model, test data, concurrency, thresholds, environment safety."
+    },
+    {
+      "name": "resource-efficiency-agent",
+      "file": ".claude/agents/resource-efficiency-agent.md",
+      "description": "Assess resource use and efficiency in relevant runtimes/devices.",
+      "focus": "CPU, memory, network, storage, battery, cold start, resource leaks."
+    },
+    {
+      "name": "ux-research-agent",
+      "file": ".claude/agents/ux-research-agent.md",
+      "description": "Assess user journeys and usability risks.",
+      "focus": "Personas, journey maps, task success, friction, research limitations."
+    },
+    {
+      "name": "ui-ux-design-agent",
+      "file": ".claude/agents/ui-ux-design-agent.md",
+      "description": "Review interface hierarchy, interactions and design consistency.",
+      "focus": "Information architecture, states, affordances, forms, visual hierarchy."
+    },
+    {
+      "name": "design-system-agent",
+      "file": ".claude/agents/design-system-agent.md",
+      "description": "Maintain reusable design tokens and component conventions.",
+      "focus": "Tokens, typography, spacing, components, variants, consistency."
+    },
+    {
+      "name": "responsive-design-agent",
+      "file": ".claude/agents/responsive-design-agent.md",
+      "description": "Review responsive layouts against supported viewport classes.",
+      "focus": "Breakpoints, reflow, touch, keyboard, orientation, content overflow."
+    },
+    {
+      "name": "device-compatibility-agent",
+      "file": ".claude/agents/device-compatibility-agent.md",
+      "description": "Define and assess supported device/browser/OS compatibility.",
+      "focus": "Support matrix, feature support, hardware constraints, reproducible tests."
+    },
+    {
+      "name": "usability-testing-agent",
+      "file": ".claude/agents/usability-testing-agent.md",
+      "description": "Plan task-based usability checks and report observed friction.",
+      "focus": "Critical paths, success criteria, test scripts, findings, limitations."
+    },
+    {
+      "name": "test-strategy-agent",
+      "file": ".claude/agents/test-strategy-agent.md",
+      "description": "Set risk-based testing levels and release evidence requirements.",
+      "focus": "Test pyramid, coverage goals, environments, test data, exit criteria."
+    },
+    {
+      "name": "unit-testing-agent",
+      "file": ".claude/agents/unit-testing-agent.md",
+      "description": "Create or review focused unit tests for behavior and edge cases.",
+      "focus": "Pure logic, boundaries, mocks, deterministic assertions."
+    },
+    {
+      "name": "integration-testing-agent",
+      "file": ".claude/agents/integration-testing-agent.md",
+      "description": "Verify component and service boundaries.",
+      "focus": "Database, queues, external services, contract tests, fixtures."
+    },
+    {
+      "name": "e2e-testing-agent",
+      "file": ".claude/agents/e2e-testing-agent.md",
+      "description": "Verify end-to-end critical user workflows.",
+      "focus": "Happy paths, negative paths, authz, stable selectors, test isolation."
+    },
+    {
+      "name": "regression-testing-agent",
+      "file": ".claude/agents/regression-testing-agent.md",
+      "description": "Identify likely regressions from diffs and verify impacted paths.",
+      "focus": "Changed behavior, dependent modules, compatibility, regression suite."
+    },
+    {
+      "name": "devops-agent",
+      "file": ".claude/agents/devops-agent.md",
+      "description": "Review CI/CD and environment automation.",
+      "focus": "Build pipeline, reproducibility, artifact handling, least privilege."
+    },
+    {
+      "name": "recovery-agent",
+      "file": ".claude/agents/recovery-agent.md",
+      "description": "Review backup, restore and disaster-recovery plans.",
+      "focus": "RPO/RTO, restore drills, data integrity, runbooks, dependency recovery."
+    },
+    {
+      "name": "compliance-review-agent",
+      "file": ".claude/agents/compliance-review-agent.md",
+      "description": "Map stated/applicable obligations to evidence and gaps without certifying compliance.",
+      "focus": "Scope, control mapping, evidence, exceptions, legal review needs."
+    },
+    {
+      "name": "data-governance-agent",
+      "file": ".claude/agents/data-governance-agent.md",
+      "description": "Review data lifecycle and governance controls.",
+      "focus": "Classification, access, retention, deletion, lineage, minimization."
+    },
+    {
+      "name": "engineering-orchestrator-agent",
+      "file": ".claude/agents/engineering-orchestrator-agent.md",
+      "description": "Coordinates end-to-end engineering workflows and specialist-agent delegation.",
+      "focus": "Repository discovery, brainstorm, task decomposition, dependency scheduling, approval gates, conflict resolution, verification, final reporting."
+    },
+    {
+      "name": "code-review-agent",
+      "file": ".claude/agents/code-review-agent.md",
+      "description": "Independent implementation and diff reviewer before acceptance.",
+      "focus": "Correctness, maintainability, scope adherence, error handling, unsafe patterns, tests, regression risks."
+    },
+    {
+      "name": "migration-agent",
+      "file": ".claude/agents/migration-agent.md",
+      "description": "Specialist for safe database migrations and data transformations.",
+      "focus": "Backward compatibility, expand-contract changes, locking/downtime, data integrity, idempotency, rollback and recovery."
+    },
+    {
+      "name": "test-data-agent",
+      "file": ".claude/agents/test-data-agent.md",
+      "description": "Designs safe, representative test fixtures and edge-case datasets.",
+      "focus": "Deterministic fixtures, factories, synthetic data, boundary cases, tenant isolation, privacy-safe test data."
+    },
+    {
+      "name": "api-contract-agent",
+      "file": ".claude/agents/api-contract-agent.md",
+      "description": "Validates API contracts between consumers and providers.",
+      "focus": "OpenAPI/schema consistency, request/response compatibility, error formats, versioning, generated clients, contract tests."
+    },
+    {
+      "name": "dependency-management-agent",
+      "file": ".claude/agents/dependency-management-agent.md",
+      "description": "Evaluates dependency health and safe dependency lifecycle changes.",
+      "focus": "Outdated/unused/transitive dependencies, compatibility, lockfiles, upgrade paths, reproducibility, supply-chain risk."
+    },
+    {
+      "name": "internationalization-agent",
+      "file": ".claude/agents/internationalization-agent.md",
+      "description": "Reviews localization and multilingual product behavior.",
+      "focus": "Translation externalization, locale-aware dates/numbers/currency, pluralization, Unicode, RTL layout, fallback behavior."
+    },
+    {
+      "name": "technical-debt-agent",
+      "file": ".claude/agents/technical-debt-agent.md",
+      "description": "Maintains an evidence-based, prioritized technical-debt view.",
+      "focus": "Debt impact, recurring maintenance cost, risk, remediation options, incremental refactoring, avoid rewrite-by-default."
+    },
+    {
+      "name": "root-cause-analysis-agent",
+      "file": ".claude/agents/root-cause-analysis-agent.md",
+      "description": "Investigates recurring or high-impact failures to identify systemic causes.",
+      "focus": "Timeline, evidence, causal chains, contributing factors, recurrence prevention, corrective and preventive actions."
+    },
+    {
+      "name": "cost-optimization-agent",
+      "file": ".claude/agents/cost-optimization-agent.md",
+      "description": "Reviews engineering choices for measurable infrastructure and runtime cost efficiency.",
+      "focus": "Cloud/resource usage, storage, network, API usage, idle capacity, cost observability, performance-cost trade-offs."
+    },
+    {
+      "name": "accessibility-automation-agent",
+      "file": ".claude/agents/accessibility-automation-agent.md",
+      "description": "Plans and interprets automated accessibility verification.",
+      "focus": "Automated accessibility tools, component-level checks, CI integration, false-positive triage, manual-test gaps, WCAG evidence."
+    },
+    {
+      "name": "dependency-license-agent",
+      "file": ".claude/agents/dependency-license-agent.md",
+      "description": "Reviews open-source license and dependency-obligation risks.",
+      "focus": "Direct/transitive licenses, notices, attribution, copyleft triggers, policy compatibility, provenance, escalation to legal counsel."
+    },
+    {
+      "name": "feature-flag-agent",
+      "file": ".claude/agents/feature-flag-agent.md",
+      "description": "Governs feature flags from creation through rollout and removal.",
+      "focus": "Flag purpose/owner, targeting, safe rollout, kill switches, test coverage, stale-flag cleanup, config and security risks."
+    },
+    {
+      "name": "database-governance-agent",
+      "file": ".claude/agents/database-governance-agent.md",
+      "description": "Enforces database schema ownership, safe cleanup planning, migration governance, and evidence-based data lifecycle decisions.",
+      "focus": "Schema inventory, foreign keys, constraints, indexes, migration ordering, orphan/duplicate data investigation, safe cleanup proposals, backup and rollback readiness."
+    },
+    {
+      "name": "ci-quality-gate-agent",
+      "file": ".claude/agents/ci-quality-gate-agent.md",
+      "description": "Own CI pipeline quality gates, required checks, and evidence-based gate results.",
+      "focus": "CI workflow design, required status checks, lint/type/test/security gates, artifact results, branch protection recommendations."
+    },
+    {
+      "name": "requirements-traceability-agent",
+      "file": ".claude/agents/requirements-traceability-agent.md",
+      "description": "Trace requirements through tasks, implementation, tests, and acceptance evidence.",
+      "focus": "Requirement IDs, acceptance criteria, requirement-to-test mapping, gaps, TODO references, completion evidence."
+    },
+    {
+      "name": "backup-restore-validation-agent",
+      "file": ".claude/agents/backup-restore-validation-agent.md",
+      "description": "Review backup and restore readiness and plan safe recovery validation.",
+      "focus": "Backup coverage, RPO/RTO, restore runbooks, integrity checks, isolated restore exercises, recovery evidence."
+    },
+    {
+      "name": "event-messaging-agent",
+      "file": ".claude/agents/event-messaging-agent.md",
+      "description": "Review asynchronous messaging and event-driven system correctness.",
+      "focus": "Event schemas, queue semantics, retries, idempotency, ordering, dead-letter queues, outbox/inbox patterns, consumer compatibility."
+    },
+    {
+      "name": "infrastructure-as-code-agent",
+      "file": ".claude/agents/infrastructure-as-code-agent.md",
+      "description": "Review infrastructure-as-code and environment consistency.",
+      "focus": "Terraform or equivalent templates, container/orchestration config, IAM, drift, reproducibility, secrets references, plan diffs."
+    },
+    {
+      "name": "test-environment-agent",
+      "file": ".claude/agents/test-environment-agent.md",
+      "description": "Improve reproducibility, isolation, and reliability of test environments.",
+      "focus": "Environment parity, deterministic fixtures, service mocks, ephemeral databases, test cleanup, flaky-test diagnosis."
+    }
+  ],
+  "skills": [
+    "architecture-review-workflow",
+    "audit-remediation-workflow",
+    "audit-reverification-workflow",
+    "bug-audit-workflow",
+    "bug-fix-orchestration",
+    "database-schema-governance",
+    "device-audit-workflow",
+    "documentation-review-workflow",
+    "end-to-end-module-development",
+    "engineering-state-management",
+    "existing-project-enhancement",
+    "feature-implementation-workflow",
+    "feature-planning-workflow",
+    "full-audit-workflow",
+    "incident-readiness-workflow",
+    "module-completion-report",
+    "performance-audit-workflow",
+    "project-initialization-workflow",
+    "release-readiness-workflow",
+    "scoped-audit-workflow",
+    "security-audit-workflow",
+    "test-planning-workflow",
+    "requirements-traceability",
+    "ci-quality-gates",
+    "backup-restore-validation",
+    "event-driven-system-development",
+    "test-environment-isolation"
+  ],
+  "safety": {
+    "auto_deploy": false,
+    "auto_publish": false,
+    "auto_destructive_migrations": false,
+    "auto_fix_audit_findings": false,
+    "permission_bypass": false
+  },
+  "orchestration": {
+    "main_entrypoints": [
+      ".claude/commands/engineering-orchestrator.md",
+      ".claude/commands/build-module.md"
+    ],
+    "skill": ".claude/skills/end-to-end-module-development/SKILL.md",
+    "protocol": "workflows/agent-orchestration.md",
+    "execution_model": "Main Claude Code session delegates to specialist agents; nested subagent delegation is not assumed.",
+    "approval_policy": "Approval-first; no destructive operations or production actions without explicit approval.",
+    "specialist_routing": {
+      "independent_change_review": [
+        "code-review-agent",
+        "code-quality-agent",
+        "architecture-agent"
+      ],
+      "database_schema_or_data_change": [
+        "database-agent",
+        "database-governance-agent",
+        "migration-agent",
+        "data-governance-agent",
+        "test-data-agent"
+      ],
+      "api_or_consumer_provider_contract": [
+        "api-agent",
+        "api-contract-agent",
+        "integration-agent",
+        "integration-testing-agent"
+      ],
+      "dependency_change": [
+        "dependency-management-agent",
+        "dependency-security-agent",
+        "dependency-license-agent",
+        "security-agent"
+      ],
+      "localization_or_rtl": [
+        "internationalization-agent",
+        "frontend-agent",
+        "responsive-design-agent",
+        "accessibility-agent"
+      ],
+      "technical_debt_or_refactoring": [
+        "technical-debt-agent",
+        "code-quality-agent",
+        "duplication-agent",
+        "architecture-agent"
+      ],
+      "recurring_or_incident_defect": [
+        "root-cause-analysis-agent",
+        "reliability-agent",
+        "observability-agent",
+        "regression-testing-agent"
+      ],
+      "cost_or_resource_efficiency": [
+        "cost-optimization-agent",
+        "resource-efficiency-agent",
+        "performance-agent",
+        "scalability-agent"
+      ],
+      "automated_accessibility": [
+        "accessibility-automation-agent",
+        "accessibility-agent",
+        "frontend-agent"
+      ],
+      "feature_rollout_or_flag_lifecycle": [
+        "feature-flag-agent",
+        "configuration-agent",
+        "testing-agent",
+        "observability-agent"
+      ],
+      "all_material_implementations": [
+        "code-review-agent",
+        "test-strategy-agent"
+      ]
+    }
+  },
+  "reporting": {
+    "completion_report_skill": ".claude/skills/module-completion-report/SKILL.md",
+    "completion_report_command": ".claude/commands/module-report.md",
+    "template": "templates/MODULE_COMPLETION_REPORT.md",
+    "default_output": "docs/reports/<module-slug>-completion-report.md"
+  },
+  "workflows": {
+    "existing_project_enhancement": {
+      "command": ".claude/commands/enhance-project.md",
+      "skill": ".claude/skills/existing-project-enhancement/SKILL.md",
+      "protocol": "workflows/existing-project-enhancement.md",
+      "default_report": "docs/reports/existing-project-enhancement-report.md",
+      "approval_first": true
+    }
+  },
+  "recommended_specialists_added": [
+    "code-review-agent",
+    "migration-agent",
+    "test-data-agent",
+    "api-contract-agent",
+    "dependency-management-agent",
+    "internationalization-agent",
+    "technical-debt-agent",
+    "root-cause-analysis-agent",
+    "cost-optimization-agent",
+    "accessibility-automation-agent",
+    "dependency-license-agent",
+    "feature-flag-agent"
+  ],
+  "phase_capabilities": {
+    "phase_1_reliability": {
+      "workflow": "workflows/phase-1-reliability.md",
+      "artifacts": [
+        "templates/AGENT-TASK-LEDGER.md",
+        "templates/AGENT-RESULT.md"
+      ],
+      "command": "/engineering-orchestrator"
+    },
+    "phase_2_quality_assurance": {
+      "workflow": "workflows/phase-2-quality-assurance.md",
+      "artifacts": [
+        "templates/AUDIT-BASELINE.md"
+      ],
+      "command": "/audit-diff"
+    },
+    "phase_3_project_intelligence": {
+      "workflow": "workflows/phase-3-project-intelligence.md",
+      "artifacts": [
+        "templates/PROJECT-MAP.md"
+      ],
+      "command": "/architecture-map"
+    },
+    "phase_4_advanced_automation": {
+      "workflow": "workflows/phase-4-advanced-automation.md",
+      "command": "/agent-efficiency-review"
+    }
+  },
+  "commands": [
+    "agent-efficiency-review",
+    "architecture-map",
+    "audit",
+    "audit-ai",
+    "audit-all",
+    "audit-api",
+    "audit-architecture",
+    "audit-configuration",
+    "audit-database",
+    "audit-database-governance",
+    "audit-deployment",
+    "audit-device",
+    "audit-diff",
+    "audit-documentation",
+    "audit-frontend",
+    "audit-performance",
+    "audit-reliability",
+    "audit-security",
+    "audit-testing",
+    "bug-audit",
+    "bug-fix-orchestrator",
+    "build-module",
+    "engineering-orchestrator",
+    "enhance-project",
+    "fix-audit",
+    "implement-feature",
+    "module-report",
+    "plan-database-cleanup",
+    "plan-feature",
+    "project-init",
+    "re-audit",
+    "release-check",
+    "validate-os",
+    "trace-requirements",
+    "validate-recovery",
+    "check-ci-gates"
+  ]
+}
